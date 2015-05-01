@@ -1,3 +1,108 @@
+<?php
+include("application/conn.php");
+$resultsss = "SELECT * FROM tbl_programs where Programtype=1 and Active=1 order by Orderforaltera";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $rvvlsicourses[$s]["idprograms"]	= $row["idprograms"];
+		  $rvvlsicourses[$s]["Description"]	= $row["Description"];
+		   $rvvlsicourses[$s]["Title"]	= $row["Title"];
+		   		   $rvvlsicourses[$s]["Description"]	= $row["Description"];
+		   
+		  $s++;  
+		}
+
+$resultsss = "SELECT * FROM tbl_programs where Programtype=2 and Active=1 order by Orderforaltera";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $weekendcourses[$s]["idprograms"]	= $row["idprograms"];
+		  $weekendcourses[$s]["Description"]	= $row["Description"];
+		   $weekendcourses[$s]["Title"]	= $row["Title"];
+		   		   $weekendcourses[$s]["Description"]	= $row["Description"];
+		   
+		  $s++;  
+		}
+
+$resultsss = "SELECT * FROM tbl_programs where Programtype=3 and Active=1 order by Orderforaltera";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $corporatecourses[$s]["idprograms"]	= $row["idprograms"];
+		  $corporatecourses[$s]["Description"]	= $row["Description"];
+		   $corporatecourses[$s]["Title"]	= $row["Title"];
+		   		   $corporatecourses[$s]["Description"]	= $row["Description"];
+		   
+		  $s++;  
+		}
+		
+		
+		
+$resultsss = "SELECT * FROM tbl_programs where Programtype=0 and Active=1 and AlteraCategory=1";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $alteraonecourses[$s]["idprograms"]	= $row["idprograms"];
+		  $alteraonecourses[$s]["Description"]	= $row["Description"];
+		   $alteraonecourses[$s]["Title"]	= $row["Title"];
+
+		  $s++;  
+		}
+	
+		
+$resultsss = "SELECT * FROM tbl_programs where Programtype=0 and Active=1 and AlteraCategory=2";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $alteratwocourses[$s]["idprograms"]	= $row["idprograms"];
+		  $alteratwocourses[$s]["Description"]	= $row["Description"];
+		   $alteratwocourses[$s]["Title"]	= $row["Title"];
+		  $s++;  
+		}
+	
+$resultsss = "SELECT * FROM tbl_programs where Programtype=0 and Active=1 and AlteraCategory=3";
+
+	$resultc = mysql_query($resultsss);
+	$s=0;
+	while ($row = mysql_fetch_assoc($resultc)) {
+		  $alterathreecourses[$s]["idprograms"]	= $row["idprograms"];
+		  $alterathreecourses[$s]["Description"]	= $row["Description"];
+		   $alterathreecourses[$s]["Title"]	= $row["Title"];
+		  $s++;  
+		}
+		
+
+ 
+ 
+
+//$select = "select * from tbl_programcalendar where idprograms in (select idprograms from tbl_programs where Programtype=1) and active=1";
+$select ="SELECT * , DATE_FORMAT( startdate, '%D %M %Y' ) AS stdate
+FROM tbl_programcalendar
+WHERE idprograms
+IN (
+
+SELECT idprograms
+FROM tbl_programs
+WHERE Programtype !=0
+)
+AND active =1 order by Startyear,stdate";
+$resultprogramsdetails = mysql_query($select);
+	
+	$k=0;
+	while ($row = mysql_fetch_assoc($resultprogramsdetails)) {
+		  $arrprogramdetails[$k]["idprograms"]	= $row["idprograms"];
+		  	  $arrprogramdetails[$k]["idprogramcalendar"]	= $row["idprogramcalendar"];
+		  $arrprogramdetails[$k]["startmonth"]	= $row["startmonth"].''.$row["startweek"].','.$row["Startyear"].'-'.$row["endmonth"].''.$row["endweek"].','.$row["Endyear"];
+		  if($arrprogramdetails[$k]["startmonth"]=='Jan1st Week,2015-Jan2nd Week,2015')
+		   $arrprogramdetails[$k]["startmonth"]="Register for next batch";
+		  $k++;  
+		}		
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,66 +126,7 @@
 </head>
 
 <body>
-        <header>
-        <div class="navbar navbar-default top--header" role="navigation">
-            <div class="container">
-                <div class="row">                    
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/rv_institutes.png" class="img-responsive" /></a> 
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/rv_vlsi.png" class="img-responsive" /></a> 
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/nanochip.png" class="img-responsive" /></a>  
-                        <div class="col-sm-7 col-sm-offset-5 col-md-6 col-md-offset-6 mar-t25 mar-b30">
-                        <div class="navbar-right pad-t10">
-                           <div class="clearfix">
-                                <ul class="pull-left h-small-nav pad-t5">
-                                    <li><a href="#">Gallery</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                                <ul class="pull-left h-social">
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Linked In</a></li>
-                                    <li><a href="#">Youtube</a></li>
-                                </ul> 
-                            </div>                                               
-                        </div>
-                    </div>                 
-                </div>
-            </div>
-            <nav class="main-nav">
-                <div class="container p-relative">
-                   <div class="clearfix">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-</div>                                           
-                        <div id="navbar" class="navbar-collapse collapse clearfix">
-                            <ul class="nav navbar-nav header-nav">
-                                <li class="active"><a href="#" class="pad-sm-t13 pad-sm-b12">Courses</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Our Differentiators</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Faculty Members</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Placements</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12 pad-r0">Testimonials</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12 pad-r0">B.E Projects</a>
-                                </li>                                
-                            </ul>                           
-                        </div>
-                                                                                              
-                </div>
-            </nav>
-        </div>
-    </header>
-    
-    
-    
+<?php include('include/header.php') ;?>
     <section class="container">
     <h3 class="font36 txtc">Our Courses</h3> 
     <hr/>          
@@ -100,307 +146,273 @@
     <p>Add value to your academic degree by acquiring the skills to be industry ready or to prepare for higher studies abroad. We have a course that's right for you.</p>
     <h3 class="font18 pad-t10 primary-color">RV-VLSI:Advanced Diploma and Diploma Programs -(Full time program)</h3>    
     <ul class="list-group">
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">Advanced Diploma in Embedded Systems Software (ADEMS)</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Apr2nd Week,2015-Aug2nd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">Advanced Diploma in ASIC Design (ADAD)</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Jul1st Week,2015-Dec4th Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>        
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">Advanced Diploma in ASIC Design (ADAD)</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Aug2nd Week,2015-Dec2nd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>         
-    </li>
+<input type="text"  class="input-txt" name="selectedcourse" id="selectedcourse" value=''/>
+    <?php for($i=0;$i<count($rvvlsicourses);$i++){?>
+	    <li class="list-group-item">
+	        <div class="row clearfix">
+	            <div class="col-sm-6 sm-mar-t10">
+	                <a href="#" data-toggle="modal" data-target="<?php echo '#'.$rvvlsicourses[$i]['idprograms'];?>"><?php echo $rvvlsicourses[$i]['Title'];?></a>
+	            </div>
+	            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
+	            <select name="program" id="program" class="form-control" >
+	            <?php for ($k = 0; $k < count($arrprogramdetails); $k++)
+		            {
+		                if ($arrprogramdetails[$k]['idprograms'] == $rvvlsicourses[$i]['idprograms'])
+			                { ?>
+								<option value="<?php echo $arrprogramdetails[$k]['idprogramcalendar']; ?>">
+									<?php echo $arrprogramdetails[$k]['startmonth']; ?>		    
+								 </option>		 		 
+				 	  <?php }
+				 	} ?> 
+				 	         
+				</select>
+	            </div>
+	            <div class="col-sm-2 xs-mar-t10">
+	                <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $rvvlsicourses[$i]['idprograms'];?>)">JOIN NOW</a>                
+	            </div>
+	        </div>
+	    </li>
+    <?php } ?>
     </ul> 
     <h3 class="font18 pad-t20 primary-color">Weekend Courses -(Part time courses for working professionals)</h3>    
     <ul class="list-group">
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 mar-t10">
-                <a href="#">RTL Verification using System Verilog</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Jul2nd Week,2015-Sep2nd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">RTL Design using Verilog (Bridge Course for non VLSI Engineers)</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Apr2nd Week,2015-May2nd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>        
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">IC Layout design and optimization techniques (Full Custom Layout Design)</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Jul3rd Week,2015-Oct3rd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>         
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">Static Timing Analysis of VLSI Designs</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">June3rd Week,2015-Jul3rd Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>         
-    </li>
-    <li class="list-group-item">
-        <div class="row clearfix">
-            <div class="col-sm-6 sm-mar-t10">
-                <a href="#">ASIC Physical Design (PD) for Deep Submicron process nodes</a>
-            </div>
-            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
-                <select class="form-control">
-                    <option value="">Aug1st Week,2015-Nov1st Week,2015</option>
-                </select>
-            </div>
-            <div class="col-sm-2 xs-mar-t10">
-                <button type="submit" class="btn btn-primary btn-block">JOIN NOW</button>                
-            </div>
-        </div>         
-    </li>            
-    </ul>    
+    <?php for($i=0;$i<count($weekendcourses);$i++){?>
+	    <li class="list-group-item">
+	        <div class="row clearfix">
+	            <div class="col-sm-6 sm-mar-t10">
+	                <a href="#"data-toggle="modal" data-target="<?php echo '#'.$weekendcourses[$i]['idprograms'];?>">
+	                <?php echo $weekendcourses[$i]['Title'];?></a>
+	            </div>
+	            <div class="form-group col-sm-4 mar-b0 xs-mar-t10">
+	            <select name="program" id="program" class="form-control" >
+	            <?php for ($k = 0; $k < count($arrprogramdetails); $k++)
+		            {
+		                if ($arrprogramdetails[$k]['idprograms'] == $weekendcourses[$i]['idprograms'])
+			                { ?>
+								<option value="<?php echo $arrprogramdetails[$k]['idprogramcalendar']; ?>">
+									<?php echo $arrprogramdetails[$k]['startmonth']; ?>		    
+								 </option>		 		 
+				 	  <?php }
+				 	} ?> 
+				 	         
+				</select>
+	            </div>
+	            <div class="col-sm-2 xs-mar-t10">
+<a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $weekendcourses[$i]['idprograms'];?>)">JOIN NOW</a>                	            </div>
+	        </div>
+	    </li>
+    <?php } ?>           
+    </ul>   
     <h3 class="font18 pad-t20 primary-color">Altera Programs -(Altera certified programs)</h3>    
     <ul class="list-group">
+    <?php for($i=0;$i<count($alteraonecourses);$i++){?>							
         <li class="list-group-item">
             <div class="row clearfix">
                 <div class="col-sm-9 mar-t5">
-                    <a href="#">Introduction to VHDL (IHDL110)</a>
+                    <a href="#" data-toggle="modal" data-target="<?php echo '#'.$alteraonecourses[$i]['idprograms'];?>">
+                    <?php echo $alteraonecourses[$i]['Title'];?></a>
                 </div>
                 <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
+                    <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $alteraonecourses[$i]['idprograms'];?>)">ENQUIRE NOW</a>                
                 </div>
             </div>
         </li>
+    <?php }?>
+
+	<?php for($i=0;$i<count($alteratwocourses);$i++){?>							
         <li class="list-group-item">
             <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Introduction to Verilog (IHDL120)</a>
+                <div class="col-sm-9 mar-t5">
+                    <a href="#" data-toggle="modal" data-target="<?php echo '#'.$alteratwocourses[$i]['idprograms'];?>">
+                    <?php echo $alteratwocourses[$i]['Title'];?></a>
                 </div>
                 <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>    
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">The Quartus II Software Design Series: Timing Analysis (IDSW120)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
+                    <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $alteratwocourses[$i]['idprograms'];?>)">ENQUIRE NOW</a>                
                 </div>
             </div>
         </li>
+    <?php }?>
+
+	<?php for($i=0;$i<count($alterathreecourses);$i++){?>							
         <li class="list-group-item">
             <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">The Quartus II Software Design Series: Foundation (2 Day Course) (IDSW110)</a>
+                <div class="col-sm-9 mar-t5">
+                    <a href="#" data-toggle="modal" data-target="<?php echo '#'.$alterathreecourses[$i]['idprograms'];?>">
+                    <?php echo $alterathreecourses[$i]['Title'];?></a>
                 </div>
                 <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>          
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">The Quartus II Software Design Series: Debug and Analysis Tools (IDSW135)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
+                    <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $alterathreecourses[$i]['idprograms'];?>)">ENQUIRE NOW</a>                
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Advanced Timing Analysis with TimeQuest (IDSW125)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>    
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Best Practices for Maximizing FPGA Design Productivity (2 Day Course) (IPRO200)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">The Quartus II Software Design Series: Optimization (IDSW140)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li> 
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Advanced VHDL Design Techniques (IHDL240)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Advanced Verilog HDL Design Techniques (IHDL230)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>    
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Designing with the Nios II Processor and Qsys (2 Day Course)  (IHDL115)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Developing Software for the Nios II Processor (2 Day Course) (IEMB230)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>  
-        <li class="list-group-item">
-            <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">System Integration with Qsys (2 Day Course) (IQSYS100)</a>
-                </div>
-                <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
-                </div>
-            </div>
-        </li>                                                                                            
+    <?php }?>    
+                                                                                              
     </ul>  
     <h3 class="font18 pad-t20 primary-color">Corporate Courses</h3>    
     <ul class="list-group">
+       <?php for($i=0;$i<count($corporatecourses);$i++){?>							
         <li class="list-group-item">
             <div class="row clearfix">
-                <div class="col-sm-9 sm-mar-t5">
-                    <a href="#">Linux for VLSI Engineers</a>
+                <div class="col-sm-9 mar-t5">
+                    <a href="#" data-toggle="modal" data-target="<?php echo '#123'.$corporatecourses[$i]['idprograms'];?>">
+                    <?php echo $corporatecourses[$i]['Title'];?></a>
                 </div>
                 <div class="col-sm-3 xs-mar-t10">
-                    <button type="submit" class="btn btn-primary btn-block">ENQUIRE NOW</button>                
+                    <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $corporatecourses[$i]['idprograms'];?>)">ENQUIRE NOW</a>                
                 </div>
             </div>
         </li>
+    <?php }?>
     </ul>                    
     </section>
-    <footer class="home-footer">
-            <div class="container">
-                <div class="sm-pull-right clearfix">
-                    <ul class="pull-left h-small-nav pad-t5 pad-b20">
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                    <ul class="pull-left h-social pad-b20">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Linked In</a></li>
-                        <li><a href="#">Youtube</a></li>
-                    </ul>
-                </div>
-                <p class="sm-pull-left pad-t5 pad-xs-t20 pad-b10">© RV-VLSI Design Center.</p>
-            </div>
-        </footer>   
-    
+    <?php include('include/footer.php') ;?>
+<?php for($i=0;$i<count($rvvlsicourses);$i++){?>
+<div class="modal fade" id="<?php echo $rvvlsicourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $rvvlsicourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($rvvlsicourses);$i++){?>
+<div class="modal fade" id="<?php echo $rvvlsicourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $rvvlsicourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($weekendcourses);$i++){?>
+<div class="modal fade" id="<?php echo $weekendcourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $weekendcourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($alteraonecourses);$i++){?>
+<div class="modal fade" id="<?php echo $alteraonecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $alteraonecourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($alteratwocourses);$i++){?>
+<div class="modal fade" id="<?php echo $alteratwocourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $alteratwocourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($alterathreecourses);$i++){?>
+<div class="modal fade" id="<?php echo $alterathreecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $alterathreecourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+<?php for($i=0;$i<count($corporatecourses);$i++){?>
+<div class="modal fade" id="<?php echo $corporatecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <?php echo $corporatecourses[$i]['Description'];?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
+
+
+<div class="modal fade" id="detailsForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body txtc">
+           <form>
+			  <div class="form-group has-error">    
+			    <input type="text" class="form-control" placeholder="Please Enter Name">
+			  </div>
+			  <div class="form-group has-error">    
+			    <input type="email" class="form-control" placeholder="Please Enter Email">
+			  </div>  
+			  <div class="form-group">    
+			    <input type="text" class="form-control" placeholder="Mobile Number">
+			  </div>  
+			  <button type="button" class="btn btn-primary btn-block btn-lg">JOIN NOW</button>
+			</form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type='text/JavaScript'>
+function fngetcoursename(id)
+{
+ 
+  document.getElementById('selectedcourse').value =id;
+}
+</script>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/classie.js"></script>    
-    <script src="js/fixed.js"></script>   
-    <script src="js/uisearch.js"></script>
-    <script>
-        new UISearch( document.getElementById( 'sb-search' ) );
-    </script>
+   
 </body>
 
 </html>
