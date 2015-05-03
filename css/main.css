@@ -205,6 +205,7 @@ footer{ background-color: #f2f2f2; margin-top: 30px; padding: 25px 0px 0px 0px; 
 .testimonial-ind.testimonial-ind li{ background-color: #ccc;}
 .testimonial-ind.testimonial-ind li.active{ background-color: #c72055;}
 .t-block { padding: 20px 40px; border-radius: 5px; background: #fff3e0; position: relative;}
+.t-block span{ display: block;}
 .t-block:before { position: absolute; content: '"'; top: 15px; left: 15px; font-size: 30px; color: #ffbb49; }
 .t-block:after{ position: absolute; content: ''; bottom: -14px; left: 21px;
 border-left: 20px solid transparent;
@@ -243,6 +244,11 @@ transition: all 0.1s ease-in;
 .sb-search-input:-moz-placeholder {color: #444444;}
 .sb-search-input::-moz-placeholder {color: #444444;}
 .sb-search-input:-ms-input-placeholder {color: #444444;}
+
+.has-error .form-control::-webkit-input-placeholder {color: #a94442;}
+.has-error .form-control:-moz-placeholder {color: #a94442;}
+.has-error .form-control::-moz-placeholder {color: #a94442;}
+.has-error .form-control:-ms-input-placeholder {color: #a94442;}
 
 .sb-icon-search,
 .sb-search-submit  {width: 60px;height: 53px;display: block;position: absolute;	right: 0;top: 1px;padding: 0;	margin: 0;line-height: 53px;text-align: center;	cursor: pointer;}

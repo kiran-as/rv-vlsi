@@ -74,7 +74,7 @@ $(document).ready(function() {
                 messages: {
                   
                     Name: "<span>Please enter a First Name</span>",
-                    Email: "<span>Please enter a Emamil Name</span>",
+                    Email: "<span>Please enter a Email Name</span>",
                     MobileNumber: "<span>Please enter a Emamil Name</span>",
 
                 }
@@ -122,7 +122,7 @@ $(document).ready(function() {
             <div class="col-sm-5 hpad10">
                 <div class="row hmar5">
                     <div class="col-sm-6 hpad5 mar-b10">
-                        <a href="#" class="course-block white-title mar-t10 box2">
+                        <a href="#" class="course-block white-title">
                             <p><span>Embedded Programs</span></p>
                         </a>
                         <a href="#" class="course-block white-title">

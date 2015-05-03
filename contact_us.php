@@ -18,68 +18,71 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/jquery-ui.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+
+<script type='text/JavaScript'>
+$(document).ready(function() {
+ $("#contactUsForm").validate({
+                // Specify the validation rules
+                rules: {
+                    Name: "required",  
+                    EmailAddress: "required", 
+                    MobileNumber: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+
+                    },    
+                    
+                },
+                // Specify the validation error messages
+                messages: {
+                    Name: "<span>Please enter a First Name</span>",
+                    EmailAddress: "<span>Please enter a Email </span>",
+                    MobileNumber:{
+                        required: "Please provide valid Phone no",
+                        minlength: "Please provide 10 digit Mobile Number",
+                        maxlength: "Only 10 digit Mobile Number is allowed",
+                        number: "Please enter only numbers"
+                    },
+               
+                },
+                 submitHandler: function() {
+                     sendEmail();
+                 }
+            });
+      
+
+function sendEmail()
+{
+    
+    var Name = $('#Name').val();
+    var Email = $('#EmailAddress').val();
+    var MobileNumber = $('#MobileNumber').val();
+    var Message = $('#Message').val();
+    var formData = 'name='+Name+'&email='+Email+'&mobile='+MobileNumber+'&msg='+Message;
+
+      $.ajax({
+                url : "contactformmailer.php?"+formData,
+                type: "POST",
+                data : formData, 
+                success: function(result)
+                {
+                  $('#contactThankyouId').show();
+                  $('#ContactId').hide();
+                }
+            });
+  
+}      
+ });
+  </script>    
 </head>
 
 <body>
-        <header>
-        <div class="navbar navbar-default top--header" role="navigation">
-            <div class="container">
-                <div class="row">                    
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/rv_institutes.png" class="img-responsive" /></a> 
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/rv_vlsi.png" class="img-responsive" /></a> 
-                        <a href="#" class="col-sm-2 logo"><span></span><img src="img/nanochip.png" class="img-responsive" /></a>  
-                        <div class="col-sm-7 col-sm-offset-5 col-md-6 col-md-offset-6 mar-t25 mar-b30">
-                        <div class="navbar-right pad-t10">
-                           <div class="clearfix">
-                                <ul class="pull-left h-small-nav pad-t5">
-                                    <li><a href="#">Gallery</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li class="active"><a href="#">Contact Us</a></li>
-                                </ul>
-                                <ul class="pull-left h-social">
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Linked In</a></li>
-                                    <li><a href="#">Youtube</a></li>
-                                </ul> 
-                            </div>                                               
-                        </div>
-                    </div>                 
-                </div>
-            </div>
-            <nav class="main-nav">
-                <div class="container p-relative">
-                   <div class="clearfix">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-</div>                                           
-                        <div id="navbar" class="navbar-collapse collapse clearfix">
-                            <ul class="nav navbar-nav header-nav">
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Courses</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Our Differentiators</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Faculty Members</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12">Placements</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12 pad-r0">Testimonials</a>
-                                </li>
-                                <li><a href="#" class="pad-sm-t13 pad-sm-b12 pad-r0">B.E Projects</a>
-                                </li>                                
-                            </ul>                           
-                        </div>
-                                                                                              
-                </div>
-            </nav>
-        </div>
-    </header>
-    
-    
+<?php include('include/header.php');?>
     
     <section class="container">
            <h3 class="font36 txtc">Contact Us</h3> 
@@ -92,73 +95,33 @@ Bangalore - 560041.</p>
             <p class="pad-t20 phone pad-l40">+91-80-40788574 (G0-RV-VLSI)</p>       
             <p class="message pad-l40 pad-t10"><a href="mailto:info@rv-vlsi.com" >info@rv-vlsi.com</a></p>
         </div>
-        <div class="col-sm-6 col-md-5 pad-b20">
-            <form action="">
+        <div class="col-sm-6 col-md-5 pad-b20" id="ContactId">
+            <form action="" id="contactUsForm">
                 <div class="form-group">
-                    <input type="text" placeholder="Name" class="form-control" />
+                    <input type="text" placeholder="Name" id="Name" name="Name" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email Address" class="form-control" />
+                    <input type="email" placeholder="Email Address" id="EmailAddress" name="EmailAddress" class="form-control" />
                 </div>   
                 <div class="form-group">
-                    <input type="text" placeholder="Mobile Number" class="form-control" />
+                    <input type="text" placeholder="Mobile Number" class="form-control" id="MobileNumber" name="MobileNumber"/>
                 </div>    
                 <div class="form-group">
-                    <textarea name=""  rows="5" placeholder="Message" class="form-control"></textarea>
-                </div> 
-                <div class="form-group">          
-                   <div class="row hmar5">
-                       <div class="col-xs-3 col-sm-2 hpad5">
-                        <input type="text" placeholder="7" class="form-control txtc" />
-                        </div>
-                       <div class="col-xs-1 col-sm-1 pad-t10 font14 hpad5">+</div>   
-                       <div class="col-xs-3 col-sm-2 hpad5">
-                        <input type="text" placeholder="9" class="form-control txtc" />
-                        </div>
-                       <div class="col-xs-1 col-sm-1 pad-t10 font14 hpad5">=</div> 
-                       <div class="col-xs-4 col-sm-6 hpad5">
-                        <input type="text" placeholder="Count" class="form-control txtc" />
-                        </div>                                                               
-                    </div>         
+                    <textarea name=""  rows="5" placeholder="Message" class="form-control" id="Message" name="Message"></textarea>
                 </div> 
                 <button type="submit" class="btn btn-primary btn-block btn-lg mar-t30">SUBMIT</button>                                              
             </form>
+        </div>
+        <div id="contactThankyouId" style="display:none">
+         Thanks for contacting Us we will get back to you Soon!!
         </div>
     </div>
     <div class="mar-t20">
         <img src="img/map.png" class="img-responsive" />
     </div>                     
     </section>
-    <footer class="home-footer">
-            <div class="container">
-                <div class="sm-pull-right clearfix">
-                    <ul class="pull-left h-small-nav pad-t5 pad-b20">
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                    <ul class="pull-left h-social pad-b20">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Linked In</a></li>
-                        <li><a href="#">Youtube</a></li>
-                    </ul>
-                </div>
-                <p class="sm-pull-left pad-t5 pad-xs-t20 pad-b10">© RV-VLSI Design Center.</p>
-            </div>
-        </footer>   
+    <?php include('include/footer.php');?>
     
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/classie.js"></script>    
-    <script src="js/fixed.js"></script>   
-    <script src="js/uisearch.js"></script>
-    <script>
-        new UISearch( document.getElementById( 'sb-search' ) );
-    </script>
 </body>
 
 </html>

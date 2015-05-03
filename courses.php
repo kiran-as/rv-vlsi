@@ -123,6 +123,69 @@ $resultprogramsdetails = mysql_query($select);
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/jquery-ui.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+
+<script type='text/JavaScript'>
+$(document).ready(function() {
+  $.noConflict();
+ $("#homepagetopform").validate({
+                // Specify the validation rules
+                rules: {
+                    Name: "required",  
+                    Email: "required", 
+                    MobileNumber: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+
+                    },    
+                    
+                },
+                // Specify the validation error messages
+                messages: {
+                  
+                    Name: "<span>Please enter a First Name</span>",
+                    Email: "<span>Please enter a Email Name</span>",
+                    MobileNumber:{
+                        required: "Please provide valid Phone no",
+                        minlength: "Please provide 10 digit Mobile Number",
+                        maxlength: "Only 10 digit Mobile Number is allowed",
+                        number: "Please enter only numbers"
+                    },
+
+                },
+                submitHandler: function(form) {
+                     sendEmail();
+                 }
+            });
+            
+ });
+
+function sendEmail()
+{
+$('#homepagetopform').hide();     
+                     $('#courseThankYouMessage').show();
+                     var selectedcourse = $('#selectedcourse').val();
+                     var Name = $('#Name').val();
+                     var Email = $('#Email').val();
+                     var MobileNumber = $('#MobileNumber').val();
+                     var formData = 'selectedcourse='+selectedcourse+'&name='+Name+'&Email='+Email+'&MobileNumber='+MobileNumber;
+
+                     $.ajax({
+                        url : "courseformmailer.php?"+formData,
+                        type: "POST",
+                        data : formData, 
+                        success: function(result)
+                        {
+                          //$("#div1").html(result);
+                      }
+                    });
+  
+}
+</script>    
 </head>
 
 <body>
@@ -146,7 +209,7 @@ $resultprogramsdetails = mysql_query($select);
     <p>Add value to your academic degree by acquiring the skills to be industry ready or to prepare for higher studies abroad. We have a course that's right for you.</p>
     <h3 class="font18 pad-t10 primary-color">RV-VLSI:Advanced Diploma and Diploma Programs -(Full time program)</h3>    
     <ul class="list-group">
-<input type="text"  class="input-txt" name="selectedcourse" id="selectedcourse" value=''/>
+<input type="hidden"  class="input-txt" name="selectedcourse" id="selectedcourse" value=''/>
     <?php for($i=0;$i<count($rvvlsicourses);$i++){?>
 	    <li class="list-group-item">
 	        <div class="row clearfix">
@@ -268,7 +331,7 @@ $resultprogramsdetails = mysql_query($select);
     <?php include('include/footer.php') ;?>
 <?php for($i=0;$i<count($rvvlsicourses);$i++){?>
 <div class="modal fade" id="<?php echo $rvvlsicourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -283,7 +346,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($rvvlsicourses);$i++){?>
 <div class="modal fade" id="<?php echo $rvvlsicourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -298,7 +361,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($weekendcourses);$i++){?>
 <div class="modal fade" id="<?php echo $weekendcourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -313,7 +376,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($alteraonecourses);$i++){?>
 <div class="modal fade" id="<?php echo $alteraonecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -328,7 +391,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($alteratwocourses);$i++){?>
 <div class="modal fade" id="<?php echo $alteratwocourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -343,7 +406,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($alterathreecourses);$i++){?>
 <div class="modal fade" id="<?php echo $alterathreecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -358,7 +421,7 @@ $resultprogramsdetails = mysql_query($select);
 
 <?php for($i=0;$i<count($corporatecourses);$i++){?>
 <div class="modal fade" id="<?php echo $corporatecourses[$i]['idprograms'];?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -378,19 +441,25 @@ $resultprogramsdetails = mysql_query($select);
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <div class="modal-body txtc">
-           <form>
-			  <div class="form-group has-error">    
-			    <input type="text" class="form-control" placeholder="Please Enter Name">
-			  </div>
-			  <div class="form-group has-error">    
-			    <input type="email" class="form-control" placeholder="Please Enter Email">
-			  </div>  
-			  <div class="form-group">    
-			    <input type="text" class="form-control" placeholder="Mobile Number">
-			  </div>  
-			  <button type="button" class="btn btn-primary btn-block btn-lg">JOIN NOW</button>
-			</form> 
+      <form action='' id='homepagetopform'>
+      <div class="modal-body txtc" id='courseForm'>
+          <div class="form-group">    
+            <input type="text" class="form-control" placeholder="Name" id='Name' name='Name'>
+              </div>
+              <div class="form-group">    
+                <input type="text" class="form-control" placeholder="Email" id='Email' name='Email'>
+              </div>  
+              <div class="form-group">    
+                <input type="text" class="form-control" placeholder="Mobile Number" id='MobileNumber' name='MobileNumber'>
+              </div>  
+              <button type="submit" class="btn btn-primary btn-block btn-lg">JOIN NOW</button>
+      </div>
+      </form>
+      <div class="modal-body txtc" id='courseThankYouMessage' style='display:none'>
+          <div class="form-group">    
+            Thank you for showing interest, We will get back to you with in 24 hours, Pleaes check
+            your email for further details.
+          </div>   
       </div>
     </div>
   </div>
@@ -402,8 +471,14 @@ $resultprogramsdetails = mysql_query($select);
 <script type='text/JavaScript'>
 function fngetcoursename(id)
 {
- 
+ $('#homepagetopform').show();     
+                     $('#courseThankYouMessage').hide();
   document.getElementById('selectedcourse').value =id;
+}
+function closeFancyBox()
+{
+    $.noConflict();
+  parent.$.fancybox.close();
 }
 </script>
 

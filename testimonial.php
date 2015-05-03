@@ -7,12 +7,14 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
     while ($row = mysql_fetch_assoc($resultc)) {
            if($row['testimonialtype']=='Student')
            {
+             $studenttestimonials[$j]["subject"]   = $row["subject"];
              $studenttestimonials[$j]["testimonials"]   = $row["testimonials"];
              $studenttestimonials[$j]["testimonialsby"] = $row["testimonialsby"];
              $j++;
            }
            else
            {
+            $corporatetestimonials[$k]["subject"]   = $row["subject"];
              $corporatetestimonials[$k]["testimonials"] = $row["testimonials"];
              $corporatetestimonials[$k]["testimonialsby"]= $row["testimonialsby"];
              $k++;
@@ -67,6 +69,7 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
                    <?php if($i%2=='0')
                    { ?>
                 <p class="t-block">
+                <span class="font18 pad-b10"><?php echo $studenttestimonials[$i]['subject'];?></span>
                 <?php echo $studenttestimonials[$i]['testimonials'];?></p>
                 <p class="primary-color pad-l20 pad-t10 pad-b20">
 
@@ -81,6 +84,8 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
                    <?php if($i%2!='0')
                    { ?>
                 <p class="t-block">
+                <span class="font18 pad-b10"><?php echo $studenttestimonials[$i]['subject'];?></span>
+
                 <?php echo $studenttestimonials[$i]['testimonials'];?></p>
                 <p class="primary-color pad-l20 pad-t10 pad-b20">
 
@@ -104,6 +109,8 @@ Many thanks to all the companies for visiting us regularly to hire our skilled e
                    <?php if($i%2=='0')
                    { ?>
                 <p class="t-block">
+                <span class="font18 pad-b10"><?php echo $corporatetestimonials[$i]['subject'];?></span>
+
                 <?php echo $corporatetestimonials[$i]['testimonials'];?></p>
                 <p class="primary-color pad-l20 pad-t10 pad-b20">
 
@@ -118,6 +125,8 @@ Many thanks to all the companies for visiting us regularly to hire our skilled e
                    <?php if($i%2!='0')
                    { ?>
                 <p class="t-block">
+                <span class="font18 pad-b10"><?php echo $corporatetestimonials[$i]['subject'];?></span>
+
                 <?php echo $corporatetestimonials[$i]['testimonials'];?></p>
                 <p class="primary-color pad-l20 pad-t10 pad-b20">
 
@@ -134,25 +143,7 @@ Many thanks to all the companies for visiting us regularly to hire our skilled e
 
 </div>                      
     </section>
-    <footer class="home-footer">
-            <div class="container">
-                <div class="sm-pull-right clearfix">
-                    <ul class="pull-left h-small-nav pad-t5 pad-b20">
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                    <ul class="pull-left h-social pad-b20">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Linked In</a></li>
-                        <li><a href="#">Youtube</a></li>
-                    </ul>
-                </div>
-                <p class="sm-pull-left pad-t5 pad-xs-t20 pad-b10">© RV-VLSI Design Center.</p>
-            </div>
-        </footer>   
-    
+   <?php include('include.footer.php');?>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

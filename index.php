@@ -1,3 +1,6 @@
+<?php
+include("application/conn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,19 +70,52 @@ $(document).ready(function() {
                 rules: {
                     Name: "required",  
                     Email: "required", 
-                    MobileNumber:"required"                     
+                    MobileNumber: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+
+                    },    
                     
                 },
                 // Specify the validation error messages
                 messages: {
-                  
                     Name: "<span>Please enter a First Name</span>",
-                    Email: "<span>Please enter a Emamil Name</span>",
-                    MobileNumber: "<span>Please enter a Emamil Name</span>",
+                    Email: "<span>Please enter a Email Name</span>",
+                    MobileNumber:{
+                        required: "Please provide valid Phone no",
+                        minlength: "Please provide 10 digit Mobile Number",
+                        maxlength: "Only 10 digit Mobile Number is allowed",
+                        number: "Please enter only numbers"
+                    },
+               
+                },
+                 submitHandler: function() {
+                     sendEmail();
+                 }
+            });
+      
 
+function sendEmail()
+{
+    
+    var Name = $('#Name').val();
+    var Email = $('#Email').val();
+    var MobileNumber = $('#MobileNumber').val();
+    var formData = 'Name='+Name+'&Email='+Email+'&MobileNumber='+MobileNumber;
+
+      $.ajax({
+                url : "indexTopFormMailer.php?"+formData,
+                type: "POST",
+                data : formData, 
+                success: function(result)
+                {
+                  //$("#div1").html(result);
                 }
             });
-            
+  
+}      
  });
   </script>
   </head>
@@ -122,13 +158,13 @@ $(document).ready(function() {
             <div class="col-sm-5 hpad10">
                 <div class="row hmar5">
                     <div class="col-sm-6 hpad5 mar-b10">
-                        <a href="#" class="course-block white-title mar-t10 box2">
-                            <p><span>Embedded Programs</span></p>
-                        </a>
+                       
                         <a href="#" class="course-block white-title">
                             <p><span>VLSI Programs</span></p>
                         </a>
-                       
+                        <a href="#" class="course-block white-title mar-t10 box2">
+                            <p><span>Embedded Programs</span></p>
+                        </a>
                         <a href="#" class="course-block white-title mar-t10 box3">
                         <p><span>Program for overseas Students</span></p>
                         </a>                                                
@@ -314,10 +350,14 @@ FREE SEMINARS</h3>
             </div>                                                                                                       
         </div>       
     </section>
+  
    <?php include('include/footer.php');?>
  
     
 
 </body>
-
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
 </html>
