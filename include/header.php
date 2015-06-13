@@ -39,8 +39,7 @@
                                 </li>
                                 <li><a href="our_differentiators.php" class="pad-sm-t13 pad-sm-b12">Our Differentiators</a>
                                 </li>
-                                <li><a href="faculty_members.php" class="pad-sm-t13 pad-sm-b12">Faculty Members</a>
-                                </li>
+                               
                                 <li><a href="placements.php" class="pad-sm-t13 pad-sm-b12">Placements</a>
                                 </li>
                                 <li><a href="testimonial.php" class="pad-sm-t13 pad-sm-b12 pad-r0">Testimonials</a>

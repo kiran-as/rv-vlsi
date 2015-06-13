@@ -8,7 +8,10 @@ include("application/conn.php");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RV</title>
+ <meta name="keywords" content="vlsi,embedded,vlsi training,embedded training, vlsi training in bangalore, embedded training in bangalore" />
+    <meta name="keywords" content="vlsi placement institute,embedded placement institute">
+
+    <title>RV-VLSI, VLSI and Embedded training institute in Bangalore</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -111,7 +114,7 @@ function sendEmail()
                 data : formData, 
                 success: function(result)
                 {
-                  //$("#div1").html(result);
+                  $("#div1").html(result);
                 }
             });
   
@@ -138,43 +141,90 @@ function sendEmail()
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <img src="img/home_banner1.jpg" class="img-resposive" />
+                        <div class="pad-l40 pad-r20 pad-t20 white-title banner-copy">
+                            <h1 class="font36">At RV-VLSI You Will Gain <br/><span class="font24"> Interest &#8226; Confidence &#8226; Knowledge &#8226; Experience</span></h1>     
+                            <h3 class="font18 pad-t20">In VLSI Design or Embedded Systems.</h3>                                                   
+                            <p class="pad-t20">Ninety Three percent of job openings in the core industry are in the following areas: FPGA Design, ASIC Design and Embedded Systems. RV-VLSI’s programs prepare you for these jobs.</p>
+                        </div>                        
                     </div>
                     <div class="item">
-                        <img src="img/home_banner1.jpg" class="img-resposive" />
+                        <img src="img/home_banner2.jpg" class="img-resposive" />
+                        <div class="pad-l40 pad-r20 pad-t20 white-title banner-copy">
+                            <h1 class="font36">Give your engineering degree <br/><span class="font24"> the RV-VLSI advantage!</span></h1>
+                            <h3 class="font18 pad-t20">What is VLSI Design Engineering?</h3>                                    
+                            <p class="pad-t20 pad-r30">VLSI Design Engineering is a specialized field of electronics 
+involving design and fabrication of Integrated Circuits (ICs) such as 
+microprocessors, memories and chips using nanometer process 
+technology in telephony, mobile, internet, gaming and entertainment 
+applications. A typical VLSI chip could have about a billion transistors, 
+interconnected in a specific manner to achieve a desired functionality.</p>                          
+                        </div>                         
                     </div>
                     <div class="item">
-                        <img src="img/home_banner1.jpg" class="img-resposive" />
+                        <img src="img/home_banner3.jpg" class="img-resposive" />
+                        <div class="pad-l40 pad-r20 pad-t20 white-title banner-copy">
+                            <h1 class="font36">A gateway to admissions for MS <br/><span class="font24"> in American Universities</span></h1>                                    
+                            <p class="pad-t10">Fast-track programs specialized in VLSI and Microelectronics for engineering graduates to get hands-on experience and knowledge of the latest tools and technology. Programs that will keep you ahead of competition and help you get scholarship for your MS studies in   USA.</p>                        
+                            <h3 class="font18 pad-t10">RV-VLSI Advantages</h3>         
+                            <p>&#8226; Managed and taught by industry professionals with US experience</p>
+                            <p>&#8226; Gain hands-on experience on EDA tools</p>
+                            <p>&#8226; Adds value to your SOP while applying to Universities abroad</p>
+                        </div>                         
                     </div>
                                                             
                 </div>
             </div> 
-            <div class="pad-l40 pad-r20 pad-t20 white-title p-relative">
-                <h1 class="font36">At RV-VLSI You Will Gain <br/><span class="font24"> Interest &#8226; Confidence &#8226; Knowledge &#8226; Experience</span></h1>
-                <h3 class="font18 pad-t20">In VLSI Design or Embedded Systems.</h3>
-                <p class="pad-t20">Ninety Three percent of job openings in the core industry are in the following areas: FPGA Design, ASIC Design and Embedded Systems. RV-VLSI’s programs prepare you for these jobs.</p>
-            </div>
             </div>  
             
             <div class="col-sm-5 hpad10">
                 <div class="row hmar5">
                     <div class="col-sm-6 hpad5 mar-b10">
-                       
                         <a href="#" class="course-block white-title">
-                            <p><span>VLSI Programs</span></p>
+                            <p class="c-hover"><span>VLSI Programs</span> (Advanced Diploma - Full time programs)</p>
+                            <p class="c-readmore">Click Here</p>
                         </a>
                         <a href="#" class="course-block white-title mar-t10 box2">
-                            <p><span>Embedded Programs</span></p>
+                            <p class="c-hover"><span>Embedded Programs</span> (Embedded Programs)</p>
+                       <p class="c-readmore">Click Here</p>
                         </a>
-                        <a href="#" class="course-block white-title mar-t10 box3">
-                        <p><span>Program for overseas Students</span></p>
-                        </a>                                                
+                         <h3 class="font14 secondary-color">Recent Placements</h3>
+                        <div id="carousel-example-company" class="carousel slide mar-t10 brd-all" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="img/2.png" class="img-responsive" />
+                            </div>
+                            <div class="item">
+                                <img src="img/3.png" class="img-responsive" />
+                            </div>
+                            <div class="item">
+                                <img src="img/4.png" class="img-responsive" />
+                            </div>   
+                            <div class="item">
+                                <img src="img/5.png" class="img-responsive" />
+                            </div>
+                            <div class="item">
+                                <img src="img/6.png" class="img-responsive" />
+                            </div>
+                            <div class="item">
+                                <img src="img/7.png" class="img-responsive" />
+                            </div>   
+                            <div class="item">
+                                <img src="img/8.png" class="img-responsive" />
+                            </div>
+                            <div class="item">
+                                <img src="img/9.png" class="img-responsive" />
+                            </div> 
+                            <div class="item">
+                                <img src="img/10.png" class="img-responsive" />
+                            </div>                                                                                                                                             
+                        </div>                            
+                        </div>                                               
                     </div>
                     <div class="col-sm-6 hpad5">
                         <a href="#" class="course-block white-title box4">
                             <p><span>Placement and Testimonials</span></p>
                         </a>
-                        <h3 class="txtc font18 pad-t10">REGISTER FOR 
-FREE SEMINARS</h3>
+                        <h3 class="txtc font18 pad-t10">Contact Us</h3>
         <form action='' method='POST' id="homepagetopform"> 
 
   <div class="form-group">    
@@ -186,9 +236,10 @@ FREE SEMINARS</h3>
   <div class="form-group">    
     <input type="text" class="form-control" placeholder="Mobile Number" id='MobileNumber' name='MobileNumber'>
   </div>  
-  <button type="submit" class="btn btn-primary btn-block btn-lg">JOIN NOW</button>
+  <button type="submit" class="btn btn-primary btn-block btn-lg">Contact</button>
 </form>                                                                       
-                    </div>                    
+                    </div> 
+                                       
                 </div>
             </div>         
         </div> 
@@ -225,7 +276,6 @@ FREE SEMINARS</h3>
                     <p class="list-group-item-text primary-color">&#10140; Planning to go abroad for pursuing higher studies in US, Europe, Australia</p>
                   </a>                                       
                 </div>                     
-                <button type="submit" class="btn btn-primary btn-block btn-lg mar-t20">REGISTER NOW</button>                                                          
             </div>
             <div class="col-sm-6">
                 <h2 class="font24">Students Placed Successfully</h2>
@@ -239,7 +289,7 @@ FREE SEMINARS</h3>
                     <li class="col-xs-6 col-sm-3 hpad5"><span><img src="img/magma.png" class="img-responsive" /></span></li>
                     <li class="col-xs-6 col-sm-3 hpad5"><span><img src="img/mentor-graphics.png" /></span></li>
                 </ul>
-                <div class="clearfix txtc"><a href="#">View All</a></div>                                
+                <div class="clearfix txtc"><a href="#" data-toggle="modal" data-target="#all-companies">View All</a></div>                                  
                 <h2 class="font24">Students Pursuing Higher Studies at</h2>
                 <ul class="row hmar5 logo-block colleges">
                     <li class="col-xs-6 col-sm-3 hpad5"><span><img src="img/cincinnati.png" class="img-responsive" /></span></li>
@@ -250,7 +300,6 @@ FREE SEMINARS</h3>
                     <li class="col-xs-6 col-sm-3 hpad5"><span><img src="img/university-of-california.png" class="img-responsive"/></span></li>
                     <li class="col-xs-6 col-sm-3 hpad5"><span><img src="img/university-of-colorado.png" class="img-responsive" /></span></li>                    
                 </ul> 
-                <div class="clearfix txtc"><a href="#">View All</a></div>                                               
             </div>
         </div>
         <h1 class="font36 txtc pad-t20">Register Here For More Information</h1>
@@ -353,11 +402,52 @@ FREE SEMINARS</h3>
   
    <?php include('include/footer.php');?>
  
-    
+ <div class="modal fade mar-t70" id="all-companies" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Our Students Placed In Following Companies</h4>
+      </div>
+      <div class="modal-body txtc">
+            <div class="row hmar5">
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/2.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/3.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/4.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/5.png" class="img-responsive brd-all">
+                </div>   
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/6.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/7.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/8.png" class="img-responsive brd-all">
+                </div>
+                <div class="col-xs-6 col-sm-3 hpad5 mar-b10">
+                    <img src="img/9.png" class="img-responsive brd-all">
+                </div>                                                              
+            </div>
+      </div>
+    </div>
+  </div>
+</div>       
 
 </body>
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-   
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+ 
 </html>

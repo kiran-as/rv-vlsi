@@ -44,6 +44,8 @@ var cbpAnimatedHeader = (function() {
 })();
 
 
+// FAQ Block
+
 var cbpAnimatedHeader = (function() {
 
 	var docElem = document.documentElement,
@@ -67,6 +69,43 @@ var cbpAnimatedHeader = (function() {
 		}
 		else {
 			classie.remove( header, 'p-fixed' );
+		}
+		didScroll = false;
+	}
+
+	function scrollY() {
+		return window.pageYOffset || docElem.scrollTop;
+	}
+
+	init();
+
+})();
+
+//Courses Block
+
+var cbpAnimatedHeader = (function() {
+
+	var docElem = document.documentElement,
+		header = document.querySelector( '.course-tab' ),
+		didScroll = false,
+		changeHeaderOn = 180;
+
+	function init() {
+		window.addEventListener( 'scroll', function( event ) {
+			if( !didScroll ) {
+				didScroll = true;
+				setTimeout( scrollPage, 150 );
+			}
+		}, false );
+	}
+
+	function scrollPage() {
+		var sy = scrollY();
+		if ( sy >= changeHeaderOn ) {
+			classie.add( header, 'c-width' );
+		}
+		else {
+			classie.remove( header, 'c-width' );
 		}
 		didScroll = false;
 	}

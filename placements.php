@@ -1,17 +1,17 @@
 <?php 
 include("application/conn.php");
-$resultsss = "SELECT * FROM tbl_achievers ORDER BY RAND()";
+$resultsss = "SELECT * FROM tbl_achievers";
 
     $resultc = mysql_query($resultsss);
     $s=0;
     while ($row = mysql_fetch_assoc($resultc)) {
-         $arraStudent[$s]["idacheievers"]   = $row["idacheievers"];
-         $arraStudent[$s]["name"]   = $row["name"];
-         $arraStudent[$s]["company"]    = $row["company"];
+         $arraStudentachievers[$s]["idacheievers"]   = $row["idacheievers"];
+         $arraStudentachievers[$s]["name"]   = $row["name"];
+         $arraStudentachievers[$s]["company"]    = $row["company"];
          
-         $arraStudent[$s]["batchno"]    = $row["batchno"];
+         $arraStudentachievers[$s]["batchno"]    = $row["batchno"];
          
-         $arraStudent[$s]["image"]  = $row["image"];
+         $arraStudentachievers[$s]["image"]  = $row["image"];
           $s++;  
         }
 ?>
@@ -50,15 +50,15 @@ $resultsss = "SELECT * FROM tbl_achievers ORDER BY RAND()";
             <p class="txtc pad-t10"><a href="#" data-toggle="modal" data-target="#future-star">Click here to see our future star achiever</a></p>
             <div class="row txtc mar-t30 hmar10">             
                 
-                 <?php for($i=0;$i<count($arraStudent);$i++){?>
+                 <?php for($i=0;$i<count($arraStudentachievers);$i++){?>
                 <div class="col-sm-4 col-md-3 hpad10">
                     <div class="p-block mar-b20">
-                        <img src="img/achivers/<?php echo $arraStudent[$i]['image'];?>" />
-                        <h3 class="font18 primary-color"><?php echo $arraStudent[$i]['name'];?></h3>
-                        <p><?php echo $arraStudent[$i]['company'];?></p>
+                        <img src="img/achivers/<?php echo $arraStudentachievers[$i]['image'];?>" />
+                        <h3 class="font18 primary-color"><?php echo $arraStudentachievers[$i]['name'];?></h3>
+                        <p><?php echo $arraStudentachievers[$i]['company'];?></p>
                         <div class="p-content clearfix">
                             <p>Student of RV-VLSI</p>
-                            <p class="font14 secondary-color"><?php echo $arraStudent[$i]['batchno'];?></p>
+                            <p class="font14 secondary-color"><?php echo $arraStudentachievers[$i]['batchno'];?></p>
                         </div>
                     </div>
                 </div> 
