@@ -1,0 +1,133 @@
+body{
+	position:relative;	
+	font-family:Arial, Sans-Serif;
+	font-weight: 200;
+	-webkit-font-kerning: auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* SLIDER STYLES */
+	
+.slider-wrapper{
+	position:relative;
+	overflow:hidden;	
+	width:960px;	
+	margin: auto;	
+	background:#FFFFFF;		
+	box-shadow:0 3px 5px #666;
+	height: 100%;
+	cursor: auto;	
+
+}
+
+.slider{
+	position:relative;
+	width:100%; 
+/*	height:400px; when responsive, comment this out 006699*/
+	margin:0 auto;	
+	background:#006699;
+	
+}
+/*
+@media only screen and (min-width: 1000px){
+	.slider{
+		width:1000px;
+	}
+}
+
+@media only screen and (min-width: 1440px){
+	.slider{
+		width:1440px;
+	}
+}
+*/
+/* ELEMENT STYLES */
+
+p{
+	position:absolute;
+	top:-50px;
+	cursor: normal;	
+	z-index:8000;
+	padding:1% 3%;	
+	font-size:24px;
+	line-height:100%
+	color:#fff;
+	white-space: nowrap;
+}
+
+
+
+.claim{
+	line-height:100%;
+	background: #e15258;
+	color:#FFFFFF;
+	text-transform:uppercase;
+}	
+
+.teaser{
+
+	font-size:12px;
+	line-height:12px;
+	display: block;
+	float: left;
+	padding: 5px;
+	background: #FFFFFF;
+	color:#e15258;
+}
+
+.claim_ADAD{
+	line-height:100%;
+	background: #5e715d;
+	color:#FFFFFF;
+	text-transform:uppercase;
+}
+
+.teaser_ADAD{
+
+	font-size:12px;
+	line-height:12px;
+	display: block;
+	float: left;
+	padding: 5px;
+	background: #FFFFFF;
+	color:#5e715d;
+}
+
+
+.teaser_IEEE{
+
+	font-size:12px;
+	line-height:12px;
+	display: block;
+	float: left;
+	padding: 5px;
+	background: #006699;
+	color:#FFFFFF;
+}
+
+
+.sliderclick{
+cursor: pointer;
+background: linear-gradient(top,#00acee 50%,#0394cb);
+-webkit-linear-gradient(top,#00acee 50%,#0394cb);
+-moz-linear-gradient(bottom,#0394cb 20%,#00acee);
+-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#00acee', EndColorStr='#0394cb')";
+background-color: #00acee;
+border-radius:5px;
+padding: 5px;
+color: #FFFFFF;
+
+}
+
+
+.small{
+	width:250px;
+   padding-left:0; padding-right:0px;
+	text-align: center;
+}
+
+.light-green{background:#95C542;}
+.green{background:#7CB761}
+.orange{background:#EF7D00}
+.turky{background:#348E8A}
+.white{background:#fff; color:#333}

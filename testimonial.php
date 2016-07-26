@@ -26,16 +26,40 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="og:title" content="Students and Industry Testimonials @ RV-VLSI" />
+<meta name="og:type" content="website" />
+<meta name="og:url" content="http://rv-vlsi.com" />
+<meta name="og:image" content="http://rv-vlsi.com/vlsi_img/rv_vlsi_whatsapp_5.png" />
+<meta property="fb:app_id" content="158904641191757"/>
+<meta property="og:site_name" content="rv-vlsi.com"/>
+<meta property="og:title" content="Students and Industry Testimonials @ RV-VLSI" />
+<meta property="og:description" content="Students and Industry Testimonials @ RV-VLSI" />
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://rv-vlsi.com/testimonial.php"/>
+<meta property="og:image" content="http://rv-vlsi.com/vlsi_img/marketing/testimonials.png"/>
+<meta name="keywords" content="vlsi,embedded,vlsi training,embedded training, vlsi training in bangalore, embedded training in bangalore" />
+<meta name="keywords" content="vlsi placement institute,embedded placement institute">
+<meta name="keywords" content="Embedded system training, embedded systems training, embedded training institutes, embedded systems training institutes, embedded training, embedded training Banglore" />
+
+
+ <title>Students and Industry Testimonials @ RV-VLSI</title>
+   <!-- <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RV</title>
+<meta name="og:title" content="Students and Industry Testimonials @ RV-VLSI">
+<meta name="og:type" content="website">
+<meta name="og:url" content="http://rv-vlsi.com">
+<meta name="og:image" content="http://rv-vlsi.com/vlsi_img/rv_vlsi_whatsapp_5.png">-->
+
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="vlsi_css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="vlsi_css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,21 +67,37 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
-<body>
-<?php include('include/header.php');?>
+<script type="text/javascript">
+  
+  function fncorporate(id)
+  {
+    if(id==1)
+    {
+      document.getElementById('headingss').innerHTML="Over 70% of our students are referred by RV-VLSI Alumnus. Our testimonials speak for themselves, RV-VLSI enjoys the trust and confidence of its Alumnus.";
+    }
+    if(id==2)
+    {
+      document.getElementById('headingss').innerHTML="Many thanks to all the companies for visiting us regularly to hire our skilled engineers to meet their requirements. We believe this is the ultimate recognition and endorsement for RV-VLSI.";
+    }
+  }
+</script>
+<body onload="fncorporate(1)">
+<?php include('vlsi_include/header.php');?>
     
     
     
     <section class="container">
            <h3 class="font36 txtc">Testimonials</h3> 
+                         <h3 class="font18 txtc" id="headingss"></h3>
+
            <hr/> 
+           
 <div role="tabpanel">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs mar-t20 custom-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Students</a></li>
-    <li role="presentation"><a href="#corporate" aria-controls="corporate" role="tab" data-toggle="tab">Corporate Recognition</a></li>
+    <li role="presentation" class="active"><a href="#students" aria-controls="students" role="tab" data-toggle="tab" onclick="fncorporate(1);">Students</a></li>
+    <li role="presentation"><a href="#corporate" aria-controls="corporate" role="tab" data-toggle="tab" onclick="fncorporate(2);">Corporate Recognition</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -102,7 +142,6 @@ $resultsss = "SELECT * FROM tbl_testimonials order by idtestimonials desc";
     
 <div class="row">
            <div class="col-sm-12 col-md-8 col-md-offset-2 txtc pad-b20 ">
-Many thanks to all the companies for visiting us regularly to hire our skilled engineers to meet their requirements. We believe this is the ultimate recognition and endorsement for RV-VLSI.               
            </div>           
                 <div class="col-sm-6">
                <?php for($i=0;$i<count($corporatetestimonials);$i++){?>
@@ -143,12 +182,12 @@ Many thanks to all the companies for visiting us regularly to hire our skilled e
 
 </div>                      
     </section>
-   <?php include('include.footer.php');?>
+   <?php include('vlsi_include/footer.php');?>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="vlsi_js/jquery.min.js"></script>
+    <script src="vlsi_js/bootstrap.min.js"></script>
  
 </body>
 

@@ -1,0 +1,60 @@
+<?php
+    include("application/conn.php");          
+    $name=$_POST['name'];
+    $mobile=$_POST['MobileNumber'];
+    $email=$_POST['Email'];
+    $msg=$_POST['Message']; 
+        $subject='FAQ Question :'.$name;
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\n";
+    $headers .= 'From: RV-VLSI <info@rv-vlsi.com>';
+    $time=mktime();
+                        $ip=$_SERVER['REMOTE_ADDR'];
+$strOccupation='';
+$strOrg='';
+$strAddress='';
+$strComments=$msg;
+mysql_query("insert into rv_contact_enq(ce_name,ce_phone,ce_email,ce_occupation,
+ce_institution,ce_address,ce_comments,ce_date,ce_ip) values(
+'".addslashes($name)."','".addslashes($mobile)."','".addslashes($email)."','".addslashes($strOccupation)."','".addslashes($strOrg)."','".addslashes($strAddress)."','".addslashes($strComments)."','".$time."','".$ip."')") or die(mysql_error());
+
+$body ="<table width='100%'><tr><td>Name:</td><td>$name</td>
+<tr><td>Mobile:</td><td>$mobile</td></tr>
+<tr><td>Email:</td><td>$email</td></tr>
+<tr><td>Message:</td><td>$msg</td></tr>
+<tr><td colspan='2'><br><br>We have recieved your <b>Comments/Questions.</b><br><br>Thank you for your interest in RV-VLSI.<br>Due to unusually high call volume and emails to RV-VLSI, our reply to your email might be delayed.<br> Kindly bear with us<br>
+In the mean time you may also contact us at 080-40788574 or email us to info@rv-vlsi.com.</td></tr></table>";   
+mail($email,$subject,$body,$headers); 
+mail('info@rv-vlsi.com',$subject,$body,$headers);
+
+    include("application/application/conn.php");    
+mysql_query("insert into tbl_rvstudent(name,phone,email,pgdip_coursename,resume_type) values(
+'".addslashes($name)."','".addslashes($mobile)."','".addslashes($email)."','999','RV-VLSI Website')") or die(mysql_error());
+
+$student_id = mysql_insert_id();
+
+
+    $created_date = date('Y-m-d H:i:s');
+    $councellorId = '999';
+    
+    $_POST['datepicker'] = date('Y-m-d');
+   $review_status= '1000';
+    $councelling_date = date('Y-m-d',
+        strtotime($_POST['datepicker']));
+    mysql_query("Insert into tbl_rvstudentcouncellor (idstudent,
+    councellor_review,
+    councellor_id,
+    created_date,
+    review_status,
+    review_reason,
+    councelling_date) values
+    ('$student_id',
+        '$councellor',
+        '$councellorId',
+        '$created_date',
+        '$review_status',
+        '$review_reason',
+        '$councelling_date')");
+
+                         
+?>
