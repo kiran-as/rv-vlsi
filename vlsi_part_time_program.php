@@ -14,7 +14,7 @@
                             </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-5 mar-b0 xs-mar-t10">
+                        <div class="form-group col-sm-5 mar-b0 xs-mar-t10" style="display:none;">
                             <select name="program" id="program" class="form-control" >
               <?php for ($k = 0; $k < count($arrprogramdetails); $k++)
                 {
@@ -28,8 +28,8 @@
                    
         </select>
               </div>
-              <div class="col-sm-2 xs-mar-t10">
-                  <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $vlsiPT[$i]['idprograms'];?>)">JOIN NOW</a>                
+              <div class="col-sm-4 xs-mar-t10">
+                  <a href="#" data-toggle="modal" data-target="#detailsForm" class="btn btn-primary btn-block" onclick="fngetcoursename(<?php echo $vlsiPT[$i]['idprograms'];?>)">Enquiry</a>                
               </div>
                     </div>
                 </li>
